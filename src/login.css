@@ -1,0 +1,81 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  background: url('/fondo-inicio-sesion.png') center center / cover no-repeat;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.login-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 0;
+}
+
+.login-title {
+  z-index: 1;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.login-box {
+  z-index: 1;
+  background-color: rgba(30, 30, 30, 0.95);
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+}
+
+.login-logo {
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  background-color: #444;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.login-remember {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.login-button {
+  width: 100%;
+  background-color: #f9b421;
+  border: none;
+  padding: 0.75rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  color: black;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background-color: #ffc107;
+}

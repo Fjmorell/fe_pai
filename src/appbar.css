@@ -1,0 +1,21 @@
+.imeca-appbar {
+  background-color: #1f1f1f !important;
+  color: white;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 1rem;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: white;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #bbb;
+}

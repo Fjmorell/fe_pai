@@ -1,0 +1,25 @@
+.custom-menu {
+  width: 200px;
+  background-color: #1f1f1f;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.custom-menu.collapsed {
+  width: 60px;
+}
+
+/* Ocultar texto de ítems al colapsar */
+.custom-menu.collapsed .RaMenuItemLink-text {
+  display: none;
+}
+
+/* BLINK header */
+.menu-header {
+  padding: 1rem;
+  font-weight: bold;
+  color: white;
+  white-space: nowrap;
+  text-align: center;
+}
