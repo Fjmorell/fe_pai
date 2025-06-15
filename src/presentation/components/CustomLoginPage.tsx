@@ -1,6 +1,6 @@
 import { useLogin, useNotify } from 'react-admin';
 import { useState } from 'react';
-import './login.css'; 
+import '../../login.css'; 
 
 export default function CustomLoginPage() {
   const login = useLogin();

@@ -2,7 +2,7 @@ import { AppBar, Logout, UserMenu } from 'react-admin';
 import SettingsIcon from '@mui/icons-material/Settings';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import Avatar from '@mui/material/Avatar';
-import './appbar.css';
+import '../../appbar.css';
 
 const CustomUserMenu = () => {
   const userName = localStorage.getItem('username') || 'Francisco';
