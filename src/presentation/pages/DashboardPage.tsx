@@ -1,5 +1,5 @@
 import { useRedirect } from 'react-admin';
-import '../dashboard.css';
+import '../../dashboard.css';
 
 export default function Dashboard() {
   const username = localStorage.getItem('auth') || 'Francisco';

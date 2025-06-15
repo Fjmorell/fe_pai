@@ -2,7 +2,7 @@ import { Menu, MenuItemLink, useSidebarState } from 'react-admin';
 import HomeIcon from '@mui/icons-material/Home';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ArticleIcon from '@mui/icons-material/Article';
-import './menu.css';
+import '../../menu.css';
 
 export default function MyMenu(props) {
   const [open] = useSidebarState();

@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import './sidebar.css';
+import '../../sidebar.css';
 
 export default function MySidebar() {
   const location = useLocation();

@@ -1,5 +1,5 @@
 import { useRedirect, List, Datagrid, TextField, TopToolbar, ExportButton } from 'react-admin';
-import '../dashboard.css';
+import '../../dashboard.css';
 
 const ListActions = () => (
   <TopToolbar>
