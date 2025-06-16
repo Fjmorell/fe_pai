@@ -1,19 +1,19 @@
-import { useLogin, useNotify } from 'react-admin';
-import { useState } from 'react';
-import '../../login.css'; 
+import { useLogin, useNotify } from "react-admin";
+import { useState } from "react";
+import "../../login.css";
 
 export default function CustomLoginPage() {
   const login = useLogin();
   const notify = useNotify();
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await login({ username, password });
     } catch {
-      notify('Login failed', { type: 'error' });
+      notify("Login failed", { type: "error" });
     }
   };
 
