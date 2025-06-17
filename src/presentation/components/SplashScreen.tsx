@@ -19,15 +19,9 @@ export default function SplashScreen({ onFinish }: Props) {
 
   return (
     <div className={`splash-container${fade ? " fade-out" : ""}`}>
-      <video
-        className="splash-video"
-        autoPlay
-        muted
-        playsInline
-      >
+      <video className="splash-video" autoPlay muted playsInline>
         <source src="/intro.mp4" type="video/mp4" />
       </video>
-    <div className={`splash-container${fade ? " fade-out" : ""}`}> 
       <div className="splash-overlay" />
       <h1 className="splash-title">Procurement Hub AI</h1>
     </div>
