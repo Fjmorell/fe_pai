@@ -27,6 +27,7 @@ export default function SplashScreen({ onFinish }: Props) {
       >
         <source src="/intro.mp4" type="video/mp4" />
       </video>
+    <div className={`splash-container${fade ? " fade-out" : ""}`}> 
       <div className="splash-overlay" />
       <h1 className="splash-title">Procurement Hub AI</h1>
     </div>
