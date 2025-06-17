@@ -19,6 +19,8 @@ ESLint (con configuración básica)
 
 Node.js (versión recomendada: 18+)
 
+La pantalla de presentación utiliza un video ubicado en `public/intro.mp4`. Reemplaza ese archivo por tu propio video si deseas personalizar la animación inicial.
+
 npm
 
 
