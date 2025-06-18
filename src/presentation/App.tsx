@@ -1,6 +1,7 @@
 import { Admin, CustomRoutes } from "react-admin";
 import { Route } from "react-router-dom";
 import jsonServerProviderModule from "ra-data-json-server";
+import httpClient from "../infrastructure/httpClient.js";
 
 import authProvider from "../infrastructure/authProvider.js";
 import CustomLoginPage from "./components/CustomLoginPage.js";
@@ -12,7 +13,10 @@ import PostsPage from "./pages/PostsPage.js";
 
 const jsonServerProvider =
   jsonServerProviderModule.default ?? jsonServerProviderModule;
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
+
+const apiUrl = import.meta.env.VITE_API_URL ||
+  "https://jsonplaceholder.typicode.com";
+const dataProvider = jsonServerProvider(apiUrl, httpClient);
 
 export default function App() {
   return (

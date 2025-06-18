@@ -2,7 +2,7 @@ import { useRedirect } from 'react-admin';
 import '../../dashboard.css';
 
 export default function HomePage() {
-  const username = localStorage.getItem('auth') || 'Francisco';
+  const username = localStorage.getItem('username') || 'Francisco';
   const redirect = useRedirect();
 
   return (
