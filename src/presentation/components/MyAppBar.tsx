@@ -1,7 +1,6 @@
 import { AppBar, Logout, UserMenu } from 'react-admin';
-import SettingsIcon from '@mui/icons-material/Settings';
-import RefreshIcon from '@mui/icons-material/Refresh';
 import Avatar from '@mui/material/Avatar';
+import { Box, Typography } from '@mui/material';
 import '../../appbar.css';
 
 const CustomUserMenu = () => {
@@ -20,8 +19,18 @@ const CustomUserMenu = () => {
   );
 };
 
-const MyAppBar = () => (
-  <AppBar className="imeca-appbar" userMenu={<CustomUserMenu />} />
+// AppBar personalizada sin botón de theme ni refresh
+const MyAppBar = (props) => (
+  <AppBar
+    {...props}
+    userMenu={<CustomUserMenu />}
+    toolbar={
+      <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', px: 2 }}>
+        
+        {/* 👇 Aca podrías poner otros elementos si querés */}
+      </Box>
+    }
+  />
 );
 
 export default MyAppBar;

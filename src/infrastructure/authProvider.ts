@@ -3,10 +3,15 @@ type LoginParams = {
   password: string;
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
 
-const parseJwt = (token: string) =>
-  JSON.parse(atob(token.split(".")[1]));
+const parseJwt = (token: string) => {
+  try {
+    return JSON.parse(atob(token.split(".")[1]));
+  } catch {
+    return null;
+  }
+};
 
 const authProvider = {
   login: async ({ username, password }: LoginParams) => {
@@ -27,33 +32,36 @@ const authProvider = {
       return Promise.reject();
     }
 
-    localStorage.setItem("token", token);
+    localStorage.setItem("auth_token", token);
 
-    try {
-      const decoded = parseJwt(token);
-      if (decoded?.username) {
+    const decoded = parseJwt(token);
+    if (decoded) {
+      if (decoded.username) {
         localStorage.setItem("username", decoded.username);
       }
-      if (decoded?.roles) {
+      if (decoded.roles) {
         localStorage.setItem("roles", JSON.stringify(decoded.roles));
       }
-    } catch {
-      // Ignore decoding errors
     }
 
     return Promise.resolve();
   },
+
   logout: () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("auth_token");
     localStorage.removeItem("username");
     localStorage.removeItem("roles");
     return Promise.resolve();
   },
-  checkAuth: () => {
-    const token = localStorage.getItem("token");
-    return token ? Promise.resolve() : Promise.reject();
-  },
-  checkError: () => Promise.resolve(),
+
+  checkAuth: () =>
+    localStorage.getItem("auth_token") ? Promise.resolve() : Promise.reject(),
+
+  checkError: (error: any) =>
+    error.status === 401 || error.status === 403
+      ? Promise.reject()
+      : Promise.resolve(),
+
   getPermissions: () => Promise.resolve(),
 };
 

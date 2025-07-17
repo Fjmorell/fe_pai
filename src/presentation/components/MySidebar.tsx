@@ -1,9 +1,11 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useSidebarState } from 'react-admin';
 import '../../sidebar.css';
 
 export default function MySidebar() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [open] = useSidebarState(); // 👈 obtiene estado del sidebar
 
   const menuItems = [
     { label: 'Home', path: '/', icon: 'home' },
@@ -12,10 +14,9 @@ export default function MySidebar() {
   ];
 
   return (
-    <div className="imeca-sidebar">
+    <div className={`imeca-sidebar ${open ? 'open' : 'closed'}`}>
       <div className="sidebar-top">
         <div className="sidebar-logo">BLINK ›</div>
-
         <ul className="sidebar-menu">
           {menuItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -26,7 +27,8 @@ export default function MySidebar() {
                 onClick={() => navigate(item.path)}
               >
                 <img
-                  src={`/icons/${item.icon}-${isActive ? 'amarillo' : 'gris'}.png`}
+                  src={`/icons/${item.icon}-${isActive ? 'blanco' : 'gris'}.png`}
+
                   alt={item.label}
                   className="sidebar-icon"
                 />
@@ -35,17 +37,6 @@ export default function MySidebar() {
             );
           })}
         </ul>
-      </div>
-
-      <div className="sidebar-footer">
-        <div className="sidebar-support">
-          <img src="/icons/q&a-gris.png" alt="Q&A" className="sidebar-icon" />
-          <span>Q&A</span>
-        </div>
-        <div className="sidebar-support">
-          <img src="/icons/Call-gris.png" alt="Support" className="sidebar-icon" />
-          <span>Technical Support</span>
-        </div>
       </div>
     </div>
   );

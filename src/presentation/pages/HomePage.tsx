@@ -2,8 +2,18 @@ import { useRedirect } from 'react-admin';
 import '../../dashboard.css';
 
 export default function HomePage() {
-  const username = localStorage.getItem('username') || 'Francisco';
   const redirect = useRedirect();
+  const rawAuth = localStorage.getItem('auth');
+  let username = localStorage.getItem('username') || 'Invitado';
+
+  try {
+    if (rawAuth) {
+      const parsed = JSON.parse(rawAuth);
+      username = parsed.username || 'Invitado';
+    }
+  } catch (e) {
+    console.error('Error parsing auth from localStorage:', e);
+  }
 
   return (
     <div className="dashboard-container">
@@ -12,21 +22,6 @@ export default function HomePage() {
         <h2>
           Bienvenido, <strong>{username}</strong>!
         </h2>
-
-        <div className="dashboard-buttons">
-          <button className="dashboard-btn active">
-            <img src="/icons/home-blanco.png" alt="Home" className="icon-img" />
-            <span>Home</span>
-          </button>
-          <button className="dashboard-btn" onClick={() => redirect('/dashboard')}>
-            <img src="/icons/dash-blanco.png" alt="Dashboard" className="icon-img" />
-            <span>Dashboard</span>
-          </button>
-            <button className="dashboard-btn" onClick={() => redirect('/posts')}>
-            <img src="/icons/posts-blanco.png" alt="Posts" className="icon-img" />
-            <span>Posts</span>
-          </button>
-        </div>
       </div>
     </div>
   );

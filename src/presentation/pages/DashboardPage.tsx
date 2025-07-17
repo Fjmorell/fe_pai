@@ -13,20 +13,7 @@ export default function Dashboard() {
         </h2>
         <p>Estado actual de tus operaciones</p>
 
-        <div className="dashboard-buttons">
-          <button className="dashboard-btn" onClick={() => redirect('/')}>
-            <img src="/icons/home-blanco.png" alt="Home" className="icon-img" />
-            <span>Home</span>
-          </button>
-          <button className="dashboard-btn active">
-            <img src="/icons/dash-blanco.png" alt="Dashboard" className="icon-img" />
-            <span>Dashboard</span>
-          </button>
-          <button className="dashboard-btn" onClick={() => redirect('/posts')}>
-            <img src="/icons/posts-blanco.png" alt="Posts" className="icon-img" />
-            <span>Posts</span>
-          </button>
-        </div>
+        
       </div>
 
       {/* Cards de métricas */}
@@ -43,7 +30,7 @@ export default function Dashboard() {
         </div>
         <div className="card">
           <img src="/icons/IA-blanco.png" alt="Recomendaciones IA" className="icon-img mb-2" />
-          <p className="card-title">Recomendaciones IA</p>
+          <p className="card-title">Recomendaciones AI</p>
           <p className="card-value">8 sugerencias</p>
         </div>
       </div>

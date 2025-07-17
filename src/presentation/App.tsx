@@ -1,22 +1,18 @@
-import { Admin, CustomRoutes } from "react-admin";
-import { Route } from "react-router-dom";
-import jsonServerProviderModule from "ra-data-json-server";
-import httpClient from "../infrastructure/httpClient.js";
+import { Admin, CustomRoutes, Resource } from 'react-admin';
+import { Route } from 'react-router-dom';
 
-import authProvider from "../infrastructure/authProvider.js";
-import CustomLoginPage from "./components/CustomLoginPage.js";
-import MyLayout from "./components/MyLayout.js";
+import authProvider from '../infrastructure/authProvider';
+import dataProvider from '../infrastructure/dataProvider';
+import CustomLoginPage from './components/CustomLoginPage';
+import MyLayout from './components/MyLayout';
 
-import HomePage from "./pages/HomePage.js";
-import DashboardPage from "./pages/DashboardPage.js";
-import PostsPage from "./pages/PostsPage.js";
+import HomePage from './pages/HomePage';
+import DashboardPage from './pages/DashboardPage';
+import PostsPage from './pages/PostsPage';
 
-const jsonServerProvider =
-  jsonServerProviderModule.default ?? jsonServerProviderModule;
-
-const apiUrl = import.meta.env.VITE_API_URL ||
-  "https://jsonplaceholder.typicode.com";
-const dataProvider = jsonServerProvider(apiUrl, httpClient);
+import UserList from './pages/users/UserList';
+import UserCreate from './pages/users/UserCreate';
+import UserEdit from './pages/users/UserEdit';
 
 export default function App() {
   return (
@@ -28,6 +24,14 @@ export default function App() {
       dashboard={HomePage}
       requireAuth
     >
+      <Resource
+        name="users"
+        list={UserList}
+        create={UserCreate}
+        edit={UserEdit}
+        options={{ label: 'Usuarios' }}
+      />
+
       <CustomRoutes>
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/posts" element={<PostsPage />} />
