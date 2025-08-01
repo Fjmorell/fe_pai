@@ -1,7 +1,8 @@
 import { fetchUtils } from 'react-admin';
 import simpleRestProvider from 'ra-data-simple-rest';
 
-const API_URL = 'http://localhost:3000/api'; // Asegurate de que coincida con el backend
+const API_URL = import.meta.env.VITE_API_URL;
+ // Asegurate de que coincida con el backend
 
 const httpClient = (url: string, options: any = {}) => {
   const token = localStorage.getItem('auth_token');

@@ -3,8 +3,6 @@ type LoginParams = {
   password: string;
 };
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
-
 const parseJwt = (token: string) => {
   try {
     return JSON.parse(atob(token.split(".")[1]));
@@ -15,34 +13,16 @@ const parseJwt = (token: string) => {
 
 const authProvider = {
   login: async ({ username, password }: LoginParams) => {
-    const response = await fetch(`${API_URL}/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ username, password }),
-    });
+    // Simula un token fake y lo guarda localmente
+    const fakeToken = btoa(
+      JSON.stringify({ alg: "HS256", typ: "JWT" })
+    ) + "." + 
+    btoa(JSON.stringify({ username, roles: ['user'] })) + 
+    ".signature";
 
-    if (!response.ok) {
-      return Promise.reject();
-    }
-
-    const { token } = await response.json();
-    if (!token) {
-      return Promise.reject();
-    }
-
-    localStorage.setItem("auth_token", token);
-
-    const decoded = parseJwt(token);
-    if (decoded) {
-      if (decoded.username) {
-        localStorage.setItem("username", decoded.username);
-      }
-      if (decoded.roles) {
-        localStorage.setItem("roles", JSON.stringify(decoded.roles));
-      }
-    }
+    localStorage.setItem("auth_token", fakeToken);
+    localStorage.setItem("username", username);
+    localStorage.setItem("roles", JSON.stringify(['user']));
 
     return Promise.resolve();
   },

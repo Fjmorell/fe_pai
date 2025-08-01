@@ -1,34 +1,29 @@
+import { useNavigate } from 'react-router-dom';
 import { useRedirect } from 'react-admin';
-import '../../dashboard.css';
 
-export default function HomePage() {
-  const redirect = useRedirect();
-  const rawAuth = localStorage.getItem('auth');
-  let username = 'Invitado';
 
-  try {
-    if (rawAuth) {
-      const parsed = JSON.parse(rawAuth);
-      username = parsed.username || 'Invitado';
-    }
-  } catch (e) {
-    console.error('Error parsing auth from localStorage:', e);
-  }
+
+export default function PurchaseGroups() {
+    const redirect = useRedirect();
+  const navigate = useNavigate();
 
   return (
-    <div className="dashboard-container">
-      {/* Hero header */}
-      <div className="dashboard-hero">
+     <div className="dashboard-container">
+<div className="dashboard-hero" style={{ backgroundImage: `url('/Banner-dashboard.png')` }}>
         <h2>
-          Bienvenido, <strong>{username}</strong>!
+          Groups
         </h2>
 
-        <div className="dashboard-buttons">
-          <button className="dashboard-btn active">
+        
+      
+
+      {/* Cards de métricas */}
+      <div className="dashboard-buttons">
+          <button className="dashboard-btn" onClick={() => redirect('/')}>
             <img src="/icons/home-blanco.png" alt="Home" className="icon-img" />
             <span>Home</span>
           </button>
-          <button className="dashboard-btn" onClick={() => redirect('/purchase/groups')}>
+          <button className="dashboard-btn active">
             <img src="/icons/dash-blanco.png" alt="Dashboard" className="icon-img" />
             <span>Groups</span>
           </button>
@@ -45,6 +40,27 @@ export default function HomePage() {
             <span>Suppliers</span>
           </button>
         </div>
+    </div>
+
+{/* Contenedor centrado */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '40px 0',
+        }}
+      >
+        <img
+          src="/groups.jpeg" // Asegurate de haberlo movido a /public/images/
+          alt="Groups Dashboard"
+          style={{
+            maxWidth: '50%',
+            maxHeight: '80vh',
+            borderRadius: '12px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.4)',
+          }}
+        />
       </div>
     </div>
   );

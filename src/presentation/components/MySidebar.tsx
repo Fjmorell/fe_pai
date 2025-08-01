@@ -8,9 +8,11 @@ export default function MySidebar() {
   const [open] = useSidebarState(); // 👈 obtiene estado del sidebar
 
   const menuItems = [
-    { label: 'Home', path: '/', icon: 'home' },
-    { label: 'Dashboard', path: '/dashboard', icon: 'dash' },
-    { label: 'Posts', path: '/posts', icon: 'posts' },
+    { label: 'Home', path: '/', icon: 'dash' },
+    { label: 'Groups', path: '/purchase/groups', icon: 'dash' },
+    { label: 'Overview', path: '/purchase/overview', icon: 'dash' },
+    { label: 'Poducts', path: '/purchase/products', icon: 'dash' },
+    { label: 'Suppliers', path: '/purchase/suppliers', icon: 'dash' },
   ];
 
   return (
